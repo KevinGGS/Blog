@@ -4,10 +4,7 @@
     require_once '../core/sql.php';
     require_once '../core/mysql.php';
 
-    insert_teste(10, 'muito bunito', 1, 1);
-    buscar_teste();
-    update_teste(10, 5, 'sla', 2, 2);
-    buscar_teste();
+    insert_teste(5, 'comentario', '1', '2');
 
     function insert_teste($nota, $comentario, $usuario_id, $post_id) : void
     {
@@ -18,11 +15,15 @@
         insere('avaliacao', $dados);
     }
 
+   buscar_teste();
+
     function buscar_teste() : void
     {
-        $avaliacao = buscar('avaliacao', ['nota', 'comentario', 'usuario_id', 'post_id'], [],'');
-        print_r($avaliacao);
+        $avaliacoes = buscar('avaliacao', ['id', 'nota', 'usuario_id', 'post_id', 'data_criacao'], [],'');
+        print_r($avaliacoes);
     }
+
+    update_teste(5, 9, 'comentario', '1', '2');
 
     function update_teste($id, $nota, $comentario, $usuario_id, $post_id) : void
     {
@@ -33,4 +34,15 @@
         $criterio = [['id', '=', $id]];
         atualiza('avaliacao', $dados, $criterio);
     }
+
+    buscar_teste();
+    delete_teste(4);
+
+    function delete_teste($id) : void
+    {
+        $criterio = [['id', '=', $id]];
+        deleta('avaliacao', $criterio);
+    }
+
+    buscar_teste();
 ?>
