@@ -4,30 +4,33 @@
     require_once '../core/sql.php';
     require_once '../core/mysql.php';
 
-    insert_teste('kelvo', 'kelvo@gmail.com', '123456');
+    insert_teste(10, 'muito bunito', 1, 1);
     buscar_teste();
-    update_teste(38, 'murilo', 'silva@gmail.com');
+    update_teste(1, 5, 'lindo', 2, 2);
     buscar_teste();
 
-    function insert_teste($nome, $email, $senha) : void
+    function insert_teste($nota, $comentario, $usuario_id, $post_id) : void
     {
-        $dados = ['nome' => $nome
-                , 'email' => $email
-                , 'senha' => $senha];
-        insere('usuario', $dados);
+        $dados = ['nota' => $nota
+                , 'comentario' => $comentario
+                , 'usuario_id' => $usuario_id
+                , '$post_id' => $post_id];
+        insere('avaliacao', $dados);
     }
 
     function buscar_teste() : void
     {
-        $usuarios = buscar('usuario', ['id', 'nome', 'email'], [],'');
-        print_r($usuarios);
+        $avaliacao = buscar('avaliacao', ['nota', 'comentario', 'usuario_id', '$post_id'], [],'');
+        print_r($avaliacao);
     }
 
-    function update_teste($id, $nome, $email) : void
+    function update_teste($id, $nota, $comentario, $usuario_id, $post_id) : void
     {
-        $dados = ['nome' => $nome
-                , 'email' => $email];
+        $dados = ['nota' => $nota
+                , 'comentario' => $comentario
+                , 'usuario_id' => $usuario_id
+                , '$post_id' => $post_id];
         $criterio = [['id', '=', $id]];
-        atualiza('usuario', $dados, $criterio);
+        atualiza('avaliacao', $dados, $criterio);
     }
 ?>
