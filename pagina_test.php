@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POST | Projeto para Web com PHP</title>
     <link rel="stylesheet"
-    href="lib\bootstrap-4.2.1-dist\bootstrap-4.2.1-dist/css/bootstrap.min.css">
+    href="lib/bootstrap-4.2.1-dist/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container">
@@ -33,6 +33,6 @@
         </div>
 
     </div>
-    <script src="lib/bootsrap-4.2.1-dist/js"></script>
+    <script src="lib/bootstrap-4.2.1-dist/js/bootstrap.min.js"></script>
 </body>
 </html>
