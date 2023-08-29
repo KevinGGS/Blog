@@ -65,7 +65,7 @@
         <?php
             $data = (!empty($entidade ['data_postagem'])) ? 
                 explode('', $entidade ['data_postagem']) [0]: '';
-            $hora (!empty($entidade ['data_postagem'])) ?
+            $hora = (!empty($entidade ['data_postagem'])) ?
                 explode('', $entidade ['data_postagem']) [1]: '';
         ?>
 <div class="row">
