@@ -6,41 +6,42 @@ require_once 'conexao_mysql.php';
 require_once 'sql.php';
 require_once 'mysql.php';
 
-foreach($_POST as $indice => $dado){
+foreach($_POST as $indice => $dado) {
     $$indice = limparDados($dado);
 }
 
-foreach($_GET as $indice => $dado){
-    $$indice = limparDados($dado);
+foreach($_GET as $indice => $dado) {
+    $$indice = limparDados($dados);
 }
 
 $id = (int)$id;
 
 switch($acao){
-    case'insert':
-        $dados = [
-            'titulo'=>$titulo,
-            'texto'=>$texto,
-            'data_postagem'=>"$data_postagem $hora_postagem",
-            'usuario_id'=>$_SESSION['login']['usuario']['id']
+    case 'insert':
+        $dados =[
+            'titulo' => $titulo,
+            'texto' => $texto,
+            'data_postagem' => "$data_postagem $hora_postagem",
+            'usuario_id' => $_SESSION['login']['usuario']['id']
         ];
 
         insere(
-            'post',$dados
+            'post',
+            $dados
         );
 
         break;
 
         case 'update':
             $dados = [
-                'titulo'=>$titulo,
-                'texto'=>$texto,
-                'data_postagem'=>"$data_postagem $hora_postagem",
-                'usuario_id'=>$_SESSION['login']['usuario']['id']
+                'titulo' => $titulo,
+                'texto' => $texto,
+                'data_postagem' => "$data_postagem $hora_postagem",
+                'usuario_id' => $_SESSION['login']['usuario']['id']
             ];
 
-            $criterio=[
-                ['id','=',$id]
+            $criterio = [
+                ['id', '=', $id]
             ];
 
             atualiza(
@@ -52,8 +53,8 @@ switch($acao){
             break;
 
             case 'delete':
-                $criterio=[
-                    ['id','=',$id]
+                $criterio = [
+                    ['id', '=', $id]
                 ];
 
                 deleta(
@@ -64,6 +65,5 @@ switch($acao){
                 break;
 }
 
-header('Location:../index.php');
-
+header('Location: ../index.php');
 ?>
